@@ -1,7 +1,6 @@
 #include "arrayBST.h"
 #include<iostream>
 #include<stddef.h>
-#include <iomanip>
 using namespace std;
 int count = 0; // count for tree
 arrayBST::arrayBST(){
@@ -57,6 +56,24 @@ bool arrayBST::search(int data){
 	return a;
 }
 
+
+/*
+void arrayBST::preorderTraversal(){
+	
+		int index=0;
+		cout<<A[index]<<endl;
+			while(true){
+				int index = 0;
+				index = (2 * index + 2);
+				cout<<A[index]<<endl;
+			}
+			while(true){
+				index=0;
+				index = (2 * index + 1);
+				cout<<A[index]<<endl;
+				
+		}	
+	}*/
 int main(){
 	arrayBST arr;
 	arr.add(40);
@@ -76,7 +93,7 @@ int main(){
 		cout<<" 25 is present";
 	else
 		cout<<"25 is not present";
-
+//	arr.preorder(2);
 
 }
 
