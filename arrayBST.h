@@ -9,7 +9,7 @@ class arrayBST:public BinarySearchTree{
 		arrayBST();
 		void add(int data);
 		//void preorderTraversal();
-		//bool search(int data);
+		bool search(int data);
 		void printElements();
 		
 };
