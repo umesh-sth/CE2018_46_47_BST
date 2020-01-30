@@ -56,6 +56,28 @@ bool arrayBST::search(int data){
 	return a;
 }
 
+int arrayBST::get_left_child(int index){
+    if(A[index]!=0 && (2*index)<=Max_Size){
+        return 2*index;
+    }
+    return -1;
+}
+
+int arrayBST::get_right_child(int index){
+    if(A[index]!=0 && (2*index+1)<=Max_Size){
+        return 2*index+1;
+    }
+    return -1;
+}
+
+void arrayBST::preorder(int index){
+	if(index>0 && A[index]!=0)
+    {
+        std::cout<<A[index]<<std::endl;
+        preorder(get_left_child(index));
+        preorder(get_right_child(index));
+    }
+}
 
 
 
@@ -95,7 +117,7 @@ int main(){
 		cout<<" 25 is present";
 	else
 		cout<<"25 is not present";
-//	arr.preorder(2);
+	arr.preorder(2);
 
 }
 

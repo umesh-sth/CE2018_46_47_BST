@@ -9,8 +9,11 @@ class arrayBST:public BinarySearchTree{
 		arrayBST();
 		void printElements();
 		void add(int data);
-	
 		bool search(int data);
+		void preorder(int data);
+		int get_right_child(int index);
+		int get_left_child(int index);
+		
 		
 		
 		
