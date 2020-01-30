@@ -1,5 +1,7 @@
 #include "arrayBST.h"
 #include<iostream>
+using namespace std;
+
 arrayBST::arrayBST(){
 	for(int i=0;i<Max_Size;i++){
 		this->A[i]=0;
@@ -7,7 +9,7 @@ arrayBST::arrayBST(){
 
 }
 
-arrayBST::void add(int data){
+void arrayBST::add(int data){
 	if(A[0]==0)
 		this->A[0] = data;
 	else
@@ -20,19 +22,24 @@ arrayBST::void add(int data){
 			if(this->A[i]==0){
 				this->A[i]=data;
 				break;
+				}
 
 	}
 	this->A[0]=this->A[0]+1;
 
 
 }
-arrayBST::printElements(){
+void arrayBST::printElements(){
 	for(int i=0;i<Max_Size;i++)
 		cout<< A[i]<<"   " ;
 	}
+
 int main(){
 	arrayBST arr;
-	arr.add(40);
+	arr.add(39);
+	arr.add(50);
+	arr.add(60);
+	arr.add(20);
 	arr.printElements();
 	
 
