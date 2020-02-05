@@ -98,6 +98,7 @@ void LinkedBST::preorderTraversal(node* root) {
     preorderTraversal(root->right);
 }
 
+
 int LinkedBST::min(){
     node* p= new node;
     p= &root;
@@ -107,6 +108,17 @@ int LinkedBST::min(){
     }
 }
 
+
+int LinkedBST::max(){
+	node *p=new node();
+        p=&root;
+        while(p ->right !=0)
+        		p= p->right;
+
+	return p->data;
+
+
+}
 
 int main(){
 	LinkedBST s;
@@ -127,4 +139,7 @@ int main(){
 	cin>>number;
 	s.search(&s.root,number);
 	cout<<"Min value: "<<s.min();
+	cout<<s.max()<<"is the max node";
+
+
 }

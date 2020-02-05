@@ -85,6 +85,16 @@ void arrayBST::preorder(int index){
     }
 }
 
+int arrayBST::maxNode(){
+ int index = 0;
+ while(A[arrayBST::get_right_child(index)]!=0){
+ 	index = index * 2 + 2 ;
+ 	}
+ 	return A[index];
+ 
+ }
+
+
 int arrayBST::min(){
     int index= 0;
     while(A[arrayBST::get_left_child(index)]!=0){
@@ -94,6 +104,7 @@ int arrayBST::min(){
     return A[index];
 
 }
+
 
 
 int main(){
@@ -110,8 +121,14 @@ int main(){
 	arr.search(26);
 	cout<<"Preorder Traversal:"<<endl;
 	arr.preorder(0);
+
+	cout<<"MAx Node";
+	cout<<arr.maxNode();
+
+
     cout<<"Min value:\n";
     cout<<arr.min();
+
 }
 
 
