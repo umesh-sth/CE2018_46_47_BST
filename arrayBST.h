@@ -13,8 +13,8 @@ class arrayBST:public BinarySearchTree{
 		void preorder(int data);
 		int get_right_child(int index);
 		int get_left_child(int index);
-		
-		
-		
-		
+		int min();
+
+
+
 };

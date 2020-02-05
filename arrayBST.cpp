@@ -36,7 +36,7 @@ void arrayBST::printElements(){
 bool arrayBST::search(int data){
 	int currentIndex=0;
 	cout<<"Searching "<<data<<endl;
-	
+
 	while(true){
 		if(A[currentIndex]==0){
 			cout<<"Key Not Found!"<<endl;
@@ -46,14 +46,14 @@ bool arrayBST::search(int data){
 			cout<<"Key  Found! at currentIndex "<< currentIndex << endl;
 			break;
 		}
-		
+
 		else if(data>A[currentIndex]){
 			currentIndex=(2*currentIndex)+2;
-			
+
 		}
 		else if(data < A[currentIndex]){
 			currentIndex=(2*currentIndex)+1;
-			
+
 		}
 	}
 }
@@ -61,7 +61,7 @@ bool arrayBST::search(int data){
 int arrayBST::get_left_child(int index){
     if((A[index]!=0) && ((2*index+1) <= Max_Size)){
 			return 2*index+1;
-		
+
 		}
 		else{
 			return -1;
@@ -85,25 +85,17 @@ void arrayBST::preorder(int index){
     }
 }
 
+int arrayBST::min(){
+    int index= 0;
+    while(A[arrayBST::get_left_child(index)]!=0){
+        index= 2* index + 1;
+    }
+
+    return A[index];
+
+}
 
 
-/*
-void arrayBST::preorderTraversal(){
-	
-		int index=0;
-		cout<<A[index]<<endl;
-			while(true){
-				int index = 0;
-				index = (2 * index + 2);
-				cout<<A[index]<<endl;
-			}
-			while(true){
-				index=0;
-				index = (2 * index + 1);
-				cout<<A[index]<<endl;
-				
-		}	
-	}*/
 int main(){
 	arrayBST arr;
 	arr.add(40);
@@ -118,7 +110,8 @@ int main(){
 	arr.search(26);
 	cout<<"Preorder Traversal:"<<endl;
 	arr.preorder(0);
-
+    cout<<"Min value:\n";
+    cout<<arr.min();
 }
 
 
