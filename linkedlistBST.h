@@ -1,18 +1,31 @@
 #include "bst.h"
-class Node{
-	int data;
-	Node* left;
-	Node* right;
+#include <iostream>
+
+
+class node
+{
+public:
+    int data;
+    node* left ;
+    node* right;
+    node();
+    node(int);
+    ~node();
 };
 
-class linkedBST:public BinarySearchTree{
-	private:
-		NOde* root;
 
-	public:
-		void add(int data);
-		void preorderTraversal();
-		bool search(int data);
-	
+class LinkedBST:public BinarySearchTree{
+    
+    public:
+    node root;
+    LinkedBST();
+    ~LinkedBST();
+    void preorderTraversal();
+    void preorderTraversal(node *root);
+    void add(int data);
+    void add(node *root,int data);
+    bool search(int data);
+    bool search(node *root,int targetKey);
+};
 
-}
+
