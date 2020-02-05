@@ -34,8 +34,8 @@ if (root->data==0){
     root->data=data;
 }else{
         if (data < root->data){
-            if (!root->left){ 
-                node *newnode=new node(data); 
+            if (!root->left){
+                node *newnode=new node(data);
                 root->left=newnode;
             }
             else{
@@ -43,8 +43,8 @@ if (root->data==0){
             }
         }
         else if (data > root->data){
-            if (!root->right){ 
-                node *newnode=new node(data); 
+            if (!root->right){
+                node *newnode=new node(data);
                 root->right=newnode;
             }
             else{
@@ -71,7 +71,7 @@ bool LinkedBST::search(node *root,int targetKey){
             else if(targetKey==p->data){
                 cout<<targetKey<<" is in the tree"<<endl;
                 return 1;
-                
+
             }
             else{
                 cout<<targetKey<<" is not in the tree"<<endl;
@@ -84,19 +84,28 @@ bool LinkedBST::search(node *root,int targetKey){
 }
 
 
-void LinkedBST::preorderTraversal(node* root) { 
-    if (!root) 
-    return; 
-  
-    
-    cout << root->data << "\t"; 
-  
-    
-    preorderTraversal(root->left);  
-  
-    
-    preorderTraversal(root->right); 
-}  
+void LinkedBST::preorderTraversal(node* root) {
+    if (!root)
+    return;
+
+
+    cout << root->data << "\t";
+
+
+    preorderTraversal(root->left);
+
+
+    preorderTraversal(root->right);
+}
+
+int LinkedBST::min(){
+    node* p= new node;
+    p= &root;
+    while(p->left!= NULL){
+        p= p->left;
+        return p->data;
+    }
+}
 
 
 int main(){
@@ -111,11 +120,11 @@ int main(){
 	cout<<"Preorder Traversal of the tree is"<<endl;
 	s.preorderTraversal(&s.root);
 	cout<<endl;
-	
-	
+
+
 	int number;
 	cout<<"Enter a number you want to search  in the tree"<<endl;
 	cin>>number;
 	s.search(&s.root,number);
-	
+	cout<<"Min value: "<<s.min();
 }
