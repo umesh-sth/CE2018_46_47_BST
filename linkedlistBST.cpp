@@ -98,14 +98,26 @@ void LinkedBST::preorderTraversal(node* root) {
     preorderTraversal(root->right);
 }
 
+void LinkedBST::inorderTraversal(node* root) {
+    if (!root)
+    return;
+
+
+    inorderTraversal(root->left);
+
+    cout << root->data << "\t";
+
+
+    inorderTraversal(root->right);
+}
 
 int LinkedBST::min(){
     node* p= new node;
     p= &root;
     while(p->left!= NULL){
         p= p->left;
-        return p->data;
     }
+    return p->data;
 }
 
 
@@ -125,7 +137,7 @@ int main(){
 
 	s.add(&s.root,46);
 	s.add(&s.root,19);
-	s.add(&s.root,77);
+	s.add(&s.root,17);
 	s.add(&s.root,33);
 	s.add(&s.root,81);
 	s.add(&s.root,51);
@@ -133,13 +145,17 @@ int main(){
 	s.preorderTraversal(&s.root);
 	cout<<endl;
 
+	cout<<"Inorder Traversal of the tree is"<<endl;
+	s.inorderTraversal(&s.root);
+	cout<<endl;
 
-	int number;
+	cout<<"Min value: "<<s.min()<<endl;
+	cout<<s.max()<<"is the max node"<<endl;
+
+    int number;
 	cout<<"Enter a number you want to search  in the tree"<<endl;
 	cin>>number;
 	s.search(&s.root,number);
-	cout<<"Min value: "<<s.min();
-	cout<<s.max()<<"is the max node";
 
 
 }
