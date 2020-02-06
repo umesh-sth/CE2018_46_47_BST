@@ -84,6 +84,15 @@ void arrayBST::preorder(int index){
         preorder(get_right_child(index));
     }
 }
+void arrayBST::inOrder(int index){
+	if(index>=0 && A[index]!=0)
+    {
+        
+        inOrder(get_left_child(index));
+        std::cout<<A[index]<<std::endl;
+        inOrder(get_right_child(index));
+    }
+}
 
 int arrayBST::maxNode(){
  int index = 0;
@@ -129,6 +138,8 @@ int main(){
     cout<<"Min value:\n";
     cout<<arr.min();
 
+cout<<"inORDER Traversal:"<<endl;
+	arr.inOrder(0);
 }
 
 
