@@ -26,6 +26,7 @@ class LinkedBST:public BinarySearchTree{
     void add(node *root,int data);
     bool search(int data);
     bool search(node *root,int targetKey);
+    int max();
 };
 
 
