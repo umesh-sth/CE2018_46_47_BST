@@ -34,44 +34,50 @@ void arrayBST::printElements(){
 	}
 
 bool arrayBST::search(int data){
-	int index = 0;
-	bool a= true;
-	while (a==true){
-		if (A[index] == data){
-			
-			return true;
+	int currentIndex=0;
+	cout<<"Searching "<<data<<endl;
+	
+	while(true){
+		if(A[currentIndex]==0){
+			cout<<"Key Not Found!"<<endl;
 			break;
 		}
-		else if (A[index] <data){
-			index = (2 * index + 2);
+		if(data==A[currentIndex]){
+			cout<<"Key  Found! at currentIndex "<< currentIndex << endl;
+			break;
+		}
+		
+		else if(data>A[currentIndex]){
+			currentIndex=(2*currentIndex)+2;
 			
 		}
-		else if (A[index] > data){
-			index = (2 * index + 1);
+		else if(data < A[currentIndex]){
+			currentIndex=(2*currentIndex)+1;
 			
 		}
-		else
-			a=false;
 	}
-	return a;
 }
 
 int arrayBST::get_left_child(int index){
-    if(A[index]!=0 && (2*index)<=Max_Size){
-        return 2*index;
-    }
-    return -1;
+    if((A[index]!=0) && ((2*index+1) <= Max_Size)){
+			return 2*index+1;
+		
+		}
+		else{
+			return -1;
+		}
 }
 
 int arrayBST::get_right_child(int index){
-    if(A[index]!=0 && (2*index+1)<=Max_Size){
-        return 2*index+1;
+    if(A[index]!=0 && (2*index+2)<=Max_Size){
+        return 2*index+2;
     }
-    return -1;
+    else
+    	return -1;
 }
 
 void arrayBST::preorder(int index){
-	if(index>0 && A[index]!=0)
+	if(index>=0 && A[index]!=0)
     {
         std::cout<<A[index]<<std::endl;
         preorder(get_left_child(index));
@@ -108,16 +114,10 @@ int main(){
 	arr.add(56);
 	arr.add(46);
 	arr.printElements();
-	if( arr.search(15)== true)
-		cout<<" 15 is present";
-	else
-		cout<<"15 is not present";
-		
-	if( arr.search(26)== true)
-		cout<<" 25 is present";
-	else
-		cout<<"25 is not present";
-	arr.preorder(2);
+	arr.search(25);
+	arr.search(26);
+	cout<<"Preorder Traversal:"<<endl;
+	arr.preorder(0);
 
 }
 
