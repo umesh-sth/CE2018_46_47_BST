@@ -1,8 +1,9 @@
-#include "bst.h"
+//#include "bst.h"
 #define Max_Size 20
 
 
-class arrayBST:public BinarySearchTree{
+//class arrayBST:public BinarySearchTree{
+class arrayBST{
 	private:
 		int A[Max_Size];
 	public:
@@ -13,15 +14,10 @@ class arrayBST:public BinarySearchTree{
 		void preorder(int data);
 		int get_right_child(int index);
 		int get_left_child(int index);
-		void inOrder(int data);
+		void inOrder(int index);
 		int maxNode();
-		
-		
-		
-
+		int returnIndex(int data);
+		void deleteNode(int data);
 		int min();
-
-
-
-
+		int minNode(int index);
 };
