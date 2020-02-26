@@ -1,5 +1,6 @@
 #include"linkedlistBST.h"
 #include<iostream>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -25,8 +26,6 @@ void LinkedBST::add(int data){
 }
 
 void LinkedBST::preorderTraversal(){}
-
-bool LinkedBST::search(int data){}
 
 
 void LinkedBST::add(node *root,int data){
@@ -56,7 +55,7 @@ if (root->data==0){
 
 bool LinkedBST::search(node *root,int targetKey){
     if(root->data==0){
-        cout<<"It is an empty tree"<<endl;
+     cout<<"It is an empty tree"<<endl;
     }
     else{
         node *p=new node();
@@ -69,18 +68,18 @@ bool LinkedBST::search(node *root,int targetKey){
                 p=p->left;
             }
             else if(targetKey==p->data){
-                cout<<targetKey<<" is in the tree"<<endl;
-                return 1;
+                //cout<<targetKey<<" is in the tree"<<endl;
+                return true;
 
             }
             else{
-                cout<<targetKey<<" is not in the tree"<<endl;
-                return 0;
+				//cout<<targetKey<<" is not in the tree"<<endl;
+                return false;
             }
         }
     }
-    cout<<targetKey<<" is not in the tree"<<endl;
-    return 0;
+    //cout<<targetKey<<" is not in the tree"<<endl;
+    return false;
 }
 
 
@@ -132,7 +131,86 @@ int LinkedBST::max(){
 
 }
 
+void LinkedBST::deleteNode(int val)
+{
+    deleteFromTree(&root,val);
+}
+
+
+void LinkedBST::deleteFromTree(node* root,int val){
+	if(search(root,val)==true){
+	
+		int dat;
+		if(root==NULL){
+			cout<<"tree is empty"<<endl;
+			return;
+		}
+		if(val<root->data){
+			node* temp=new node();
+			temp=root->left;
+			if(root->left->data==val && root->left->left==NULL && root->left->right==NULL){
+				root->left=NULL;
+			}
+			deleteFromTree(temp,val);
+			return;
+		}
+		else if(val>root->data){
+			node* temp=new node();
+			temp=root->right;
+			if(root->right->data==val && root->right->left==NULL && root->right->right==NULL){
+				root->right=NULL;
+			}
+			deleteFromTree(temp,val);
+			return;
+		}
+		else{
+			if(root->left==NULL && root->right==NULL){
+				delete root;
+				root=NULL;
+				return;
+			}
+			else if(root->left==NULL){
+				node* temp=new node();
+				temp=root->right;
+				root->data=root->right->data;
+				root->right=root->right->right;
+				delete temp;
+				return;
+			}
+			else if(root->right==NULL){
+				node* temp=new node();
+				temp=root->left;
+				root->data=root->left->data;
+				root->left=root->left->left;
+				delete temp;
+				return;
+			}
+			else{
+				node* nodetoDelete=new node();
+				nodetoDelete=root;
+				node* newNode=new node();
+				newNode=root->left;
+				while(newNode->right!=NULL){
+					newNode=newNode->right;
+				}
+				dat=newNode->data;
+				deleteFromTree(nodetoDelete,newNode->data);
+				root->data=dat;
+				return;
+			}
+		}
+	}
+	
+	else{
+		cout<<"The node to be deleted not found in the tree\n";
+		exit(0);
+		}
+}		
+	
+
+
 int main(){
+	
 	LinkedBST s;
 
 	s.add(&s.root,46);
@@ -141,21 +219,65 @@ int main(){
 	s.add(&s.root,33);
 	s.add(&s.root,81);
 	s.add(&s.root,51);
+	
 	cout<<"Preorder Traversal of the tree is"<<endl;
 	s.preorderTraversal(&s.root);
 	cout<<endl;
-
+	
+	cout<<"\n";
+	
 	cout<<"Inorder Traversal of the tree is"<<endl;
 	s.inorderTraversal(&s.root);
 	cout<<endl;
+	
+	cout<<"\n";
 
-	cout<<"Min value: "<<s.min()<<endl;
-	cout<<s.max()<<"is the max node"<<endl;
+	cout<<s.min()<<" is the min node"<<endl;
+	
+	cout<<"\n";
+	
+	cout<<s.max()<<" is the max node"<<endl;
+	
+	cout<<"\n";
 
     int number;
 	cout<<"Enter a number you want to search  in the tree"<<endl;
 	cin>>number;
-	s.search(&s.root,number);
+	if(s.search(&s.root,number)==true){
+		cout<<number<<" is in the tree.\n";
+		}
+	else{
+		cout<<number<<" is not in the tree.\n";
+		}	
+		
+	cout<<"\n";
+	
+	int n;
+	cout<<"Enter the number you want to delete\n";
+	cin>>n;
+	s.deleteNode(n);
+	
+	cout<<"\n";
 
+	cout<<"After deleting:\n";
+	cout<<"\n";
+	
+	cout<<"Preorder Traversal of the tree is"<<endl;
+	s.preorderTraversal(&s.root);
+	cout<<endl;
+	
+	cout<<"\n";
+	
+	cout<<"Inorder Traversal of the tree is"<<endl;
+	s.inorderTraversal(&s.root);
+	cout<<endl;
+	
+	cout<<"\n";
+
+	cout<<s.min()<<" is the min node"<<endl;
+	
+	cout<<"\n";
+	
+	cout<<s.max()<<" is the max node"<<endl;
 
 }
