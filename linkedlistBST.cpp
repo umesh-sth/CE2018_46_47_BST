@@ -68,17 +68,14 @@ bool LinkedBST::search(node *root,int targetKey){
                 p=p->left;
             }
             else if(targetKey==p->data){
-                //cout<<targetKey<<" is in the tree"<<endl;
                 return true;
 
             }
             else{
-				//cout<<targetKey<<" is not in the tree"<<endl;
                 return false;
             }
         }
     }
-    //cout<<targetKey<<" is not in the tree"<<endl;
     return false;
 }
 
