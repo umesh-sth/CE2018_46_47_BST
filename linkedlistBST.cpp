@@ -135,13 +135,13 @@ void LinkedBST::deleteNode(int val)
 
 
 void LinkedBST::deleteFromTree(node* root,int val){
-	if(search(root,val)==true){
 	
-		int dat;
-		if(root==NULL){
-			cout<<"tree is empty"<<endl;
-			return;
-		}
+	int dat;
+	if(root==NULL){
+		cout<<"tree is empty"<<endl;
+		return;
+	}
+	if(search(root,val)==true){
 		if(val<root->data){
 			node* temp=new node();
 			temp=root->left;
